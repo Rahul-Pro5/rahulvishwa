@@ -1,0 +1,267 @@
+:root {
+  --bg-color: #ffffff;
+  --letter-spacing: 3px;
+  --font-fam1: 'Satoshi', sans-serif;
+  --font-fam2: 'Bebas Neue', sans-serif;
+  }
+
+.contact-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 5.5625rem;
+    padding: 0;
+    gap: 30px;
+}
+
+.bebas-neue {
+  font-family: var(--font-fam2);
+}
+
+.image-container {
+    align-self: stretch;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    height: 497px;
+  }
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.contact-info-container {
+    height: fit-content;
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border: solid 1px #000;
+    background-color: #fff;
+  }
+
+  .contact-info {
+    width: 616px;
+    height: 419px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 73px 0;
+  }
+
+  .contact-heading {
+    width: 616px;
+    height: 70px;
+    flex-grow: 0;
+    font-family: var(--font-fam2);
+    font-size: 85.4px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    width: 616px;
+    height: fit-content;
+    flex-grow: 0;
+    font-family: var(--font-fam1);
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 25px;
+    letter-spacing: 3px;
+    text-align: left;
+    color: #000;
+    margin: 10px 20px;
+    gap: 50px;
+  }
+
+  .contact-content-para {
+    height: 57px;
+    align-self: stretch;
+    flex-grow: 0;
+    font-family: var(--font-fam1);
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 25px;
+    letter-spacing: 3px;
+    text-align: left;
+    color: #000;
+    margin: 10px 20px;
+  }
+
+  /* .Addressandphone {
+    height: 57px;
+    align-self: stretch;
+    flex-grow: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  } */
+
+  .Addressandphone li {
+    cursor: pointer;
+    list-style-type: none;
+    font-family: var(--font-fam1);
+    font-size: 14px;
+  }
+
+  .contact-input {
+    width: 616px;
+    height: 407px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 28px;
+    margin: 20px;
+  }
+
+  .name-input {
+    width: 616px;
+    height: 75px;
+    flex-grow: 0;
+    padding: 0 0 2px;
+  }
+
+  .Name {
+    width: 616px;
+    height: 24px;
+    font-family: var(--font-fam1);
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 3px;
+    text-align: left;
+    color: #000;
+  }
+
+  .email-input {
+    width: 616px;
+    height: 75px;
+    flex-grow: 0;
+    padding: 0 0 2px;
+  }
+
+  .Email {
+    width: 616px;
+    height: 24px;
+    font-family: var(--font-fam1);
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 3px;
+    text-align: left;
+    color: #000;
+  }
+
+  .phone-input {
+    width: 616px;
+    height: 75px;
+    flex-grow: 0;
+    padding: 0 0 2px;
+  }
+
+  .Phone {
+    width: 616px;
+    height: 24px;
+    font-family: var(--font-fam1);
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 3px;
+    text-align: left;
+    color: #000;
+  }
+
+  .message-input {
+    width: 616px;
+    height: 150px;
+    flex-grow: 0;
+  }
+
+  .Message {
+    width: 616px;
+    height: 99px;
+    margin: 28px 0 0;
+    font-family: var(--font-fam1);
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 3px;
+    text-align: left;
+    color: #000;
+  }
+
+
+  /* Form control styling */
+.form-control {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-family: var(--font-fam1);
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #000;
+  outline: none;
+  padding: 5px 0;
+  background: transparent;
+}
+
+/* Submit button styling */
+.submit-btn {
+  background-color: #000;
+  color: #fff;
+  font-family: var(--font-fam1);
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #555;
+}
