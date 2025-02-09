@@ -99,7 +99,7 @@ document.querySelectorAll('.menu-contents td').forEach((cell, index) => {
     cell.addEventListener('mouseover', () => {
       const imagePreview = document.querySelector('.image-preview');
       const images = [
-        'Assets/HUNGROOVE.png',
+        'HUNGROOVE.png',
         'Assets/SHAKESBEAR.png',
         'Assets/GHPL.png',
         'Assets/CURRY-TIMES.png',
