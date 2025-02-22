@@ -49,7 +49,6 @@ img {
     align-items: flex-start;
     gap: 10px;
     padding: 10px;
-    border: solid 1px #000;
     background-color: #fff;
   }
 
@@ -264,4 +263,138 @@ img {
 
 .submit-btn:hover {
   background-color: #555;
+}
+
+
+/* Existing CSS remains here */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .contact-info-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .contact-details,
+  .contact-input {
+    width: 100% !important;
+    margin: 0;
+    padding: 10px;
+  }
+
+  .contact-details {
+    gap: 0;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  .contact-heading {
+    font-size: 60px;
+    width: 100%;
+  }
+
+  .contact-content-para {
+    height: auto;
+    margin: 10px 0;
+  }
+
+  .name-input,
+  .email-input,
+  .phone-input,
+  .message-input {
+    width: 100% !important;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  /* Footer adjustments */
+  .addressandnavigation {
+    flex-direction: column;
+  }
+
+  .footer-others {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footerimage img {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-heading {
+    font-size: 40px;
+  }
+
+  .contact-content-para {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .Addressandphone li {
+    font-size: 12px;
+  }
+
+  .submit-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  /* Header adjustments */
+  .times {
+    display: none;
+  }
+
+  .nav-menu .Menu-heading {
+    font-size: 1.2rem;
+  }
+
+  .footer-navs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .copyrightsandpolicy p {
+    font-size: 12px;
+  }
+}
+
+/* Mobile Landscape Optimization */
+@media (max-width: 850px) and (orientation: landscape) {
+  .contact-container {
+    margin-top: 2rem;
+  }
+  
+  .contact-info-container {
+    padding: 10px;
+    align-items: center;
+  }
+}
+
+/* Form Element Adjustments */
+@media (max-width: 600px) {
+  .message-input textarea {
+    height: 100px;
+  }
+  
+  .name-input,
+  .email-input,
+  .phone-input {
+    height: 60px;
+  }
+}
+
+/* Touch Target Sizes */
+@media (pointer: coarse) {
+  .nav-link,
+  .submit-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
