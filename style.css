@@ -1180,6 +1180,10 @@ time {
   .image-preview {
     height: 300px;
   }
+
+  .im-proud-heading-container {
+    align-items: center;
+  }
 }
 
 /* Touch Target Sizes */
