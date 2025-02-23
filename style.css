@@ -581,12 +581,13 @@ time {
  .menu-section {
   display: flex;
   flex-direction: column;
+  flex: 1 1 400px;
   justify-content: center;
   align-items: center;
   gap: 15px;
   padding: 35px 0px;
   font-size: 25px;
-  width: 100%;
+  min-width: 280px;
   height: auto;
  }
 
@@ -666,24 +667,86 @@ time {
 }
 
 
-
-
-
-
 .image-preview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 570px;
-  height: 720px;
-  flex-basis: 570px;
-  flex-shrink: 0;
-  background-size: cover;
+  position: absolute;
+  inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0; */
+  background-size: 70% auto;    /* or cover, depending on your preference */
   background-position: center;
+  background-repeat: no-repeat;
   transition: background-image 0.3s ease;
-  /* border: #101010 1px solid; */
-  margin: 20px 0px;
 }
+
+
+/* ===================================================================================================
+                                              Circumference Text
+ =================================================================================================== */
+
+
+
+/* --- Preview & Circle Animation Styles --- */
+.preview-container {
+  position: relative;
+    /* Grows/shrinks, min ~400px. Adjust as you like */
+  flex: 1 1 400px;
+  min-width: 300px;
+  max-width: 700px;  /* optional max to prevent huge scaling on large screens */
+  position: relative;
+  /* If you want to maintain a ratio, you could use:
+  aspect-ratio: 4 / 5;  (for 570×720 ~ 0.79)
+  but then remove explicit height.
+  height: 600px; or 720px, or remove if using aspect-ratio */
+  aspect-ratio: 2 / 2;
+  border-right: 1px solid #000;
+}
+
+.circle-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  pointer-events: none; /* So it doesn't interfere with mouse events on the preview */
+  transform: translate(-50%, -50%);
+}
+
+.circle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* or "cover" if you want it to fill the entire box */
+}
+
+.circle-container text {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  fill: #333;
+}
+
+.dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  /* This dot starts in the center: */
+  top: 50%;
+  left: 50%;
+}
+
+@-webkit-keyframes rotating { 
+  from{
+      -webkit-transform: rotate(0deg);
+  }
+  to{
+      -webkit-transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  -webkit-animation: rotating 70s linear infinite;
+}
+
 
 /* ===================================================================================================
                                               Services

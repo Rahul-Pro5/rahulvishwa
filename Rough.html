@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+        .circle-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        /* Dot styling */
+        .dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff4444;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        text {
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            font-weight: bold;
+            fill: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle-container">
+        <svg>
+            <defs>
+                <!-- Circle path with center at (150,150) and radius 100 -->
+                <path id="circlePath" d="M50,150a100,100 0 1,1 200,0a100,100 0 1,1 -200,0"/>
+            </defs>
+            <text>
+                <textPath href="#circlePath" startOffset="0">
+                    Graphics-UI & UX • Graphics-UI & UX • Graphics-UI & UX • Graphics-UI & UX • Graphics-UI & UX • Graphics-UI & UX • Graphics-UI & UX •
+                </textPath>
+            </text>
+        </svg>
+        <div class="dot"></div>
+    </div>
+
+    <script>
+        const container = document.querySelector('.circle-container');
+        const dot = document.querySelector('.dot');
+        // Define the circle's center and radius (matching the SVG path)
+        const radius = 100;
+        const centerX = container.offsetWidth / 2;  // 150 for a 300px container
+        const centerY = container.offsetHeight / 2; // 150 for a 300px container
+
+        // Current and target positions for the dot
+        let target = { x: centerX, y: centerY };
+        let current = { x: centerX, y: centerY };
+
+        // Function to update dot position
+        function setDotPosition(x, y) {
+            dot.style.left = `${x}px`;
+            dot.style.top = `${y}px`;
+        }
+
+        // Initialize dot position at center
+        setDotPosition(centerX, centerY);
+
+        // Update the target position based on mouse movement
+        document.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Calculate the distance from the center
+            const dx = mouseX - centerX;
+            const dy = mouseY - centerY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            // If the mouse is inside the circle, set the target to the mouse position,
+            // otherwise reset it to the center.
+            if (distance <= radius) {
+                target = { x: mouseX, y: mouseY };
+            } else {
+                target = { x: centerX, y: centerY };
+            }
+        });
+
+        // Animation loop to smoothly update the dot's position
+        function animate() {
+            const smoothing = 0.1; // Adjust this factor for slower (lower value) or faster (higher value) movement
+            current.x += (target.x - current.x) * smoothing;
+            current.y += (target.y - current.y) * smoothing;
+            setDotPosition(current.x, current.y);
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
