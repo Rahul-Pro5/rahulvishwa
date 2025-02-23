@@ -154,3 +154,41 @@ function animateDot() {
   requestAnimationFrame(animateDot);
 }
 animateDot();
+
+// Update the JavaScript in script.js
+document.querySelectorAll('.menu-contents tr').forEach(row => {
+    let active = false;
+    let timeoutId;
+    
+    row.addEventListener('click', function(e) {
+      // Clear any existing timeouts
+      clearTimeout(timeoutId);
+  
+      if (this.classList.contains('active')) {
+        // Second tap - navigate to page
+        window.location.href = this.dataset.url;
+      } else {
+        // First tap - activate item
+        // Remove active class from all other rows
+        document.querySelectorAll('.menu-contents tr').forEach(r => {
+          r.classList.remove('active');
+        });
+        // Add active class to clicked row
+        this.classList.add('active');
+        active = true;
+        
+        // Set timeout to remove active state after 3 seconds
+        timeoutId = setTimeout(() => {
+          this.classList.remove('active');
+          active = false;
+        }, 3000);
+      }
+    });
+    
+    // Prevent multiple activations on scroll
+    row.addEventListener('touchmove', () => {
+      clearTimeout(timeoutId);
+      this.classList.remove('active');
+      active = false;
+    });
+  });

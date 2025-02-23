@@ -587,6 +587,7 @@ time {
   gap: 15px;
   padding: 35px 0px;
   font-size: 25px;
+  position: relative;
   min-width: 280px;
   height: auto;
  }
@@ -676,12 +677,75 @@ time {
   transition: background-image 0.3s ease;
 }
 
+.menu-contents tr.active td {
+  background: #101010 !important;
+  color: #ffffff !important;
+}
+
+.menu-contents tr.active td::after {
+  content: '→';
+  position: absolute;
+  right: 20px;
+  font-family: var(--font-fam2);
+}
+
+@media (max-width: 768px) {
+  .menu-contents tr {
+    transition: all 0.2s ease;
+  }
+  
+  .menu-contents tr.active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .menu-contents tr.active td::after {
+    content: '→';
+    position: absolute;
+    right: 1rem;
+    font-family: var(--font-fam2);
+    font-size: 1.2em;
+    animation: arrow-pulse 1s infinite;
+  }
+
+  @keyframes arrow-pulse {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+  }
+}
+
 
 /* ===================================================================================================
                                               Circumference Text
  =================================================================================================== */
 
+ .rotating-badge {
+  position: absolute;
+  top: -26px;
+  left: -10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  animation: rotate 50s linear infinite;
+}
 
+.rotating-badge::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background: RED;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
 /* --- Preview & Circle Animation Styles --- */
 .preview-container {
@@ -697,6 +761,13 @@ time {
   height: 600px; or 720px, or remove if using aspect-ratio */
   aspect-ratio: 2 / 2;
   border-right: 1px solid #000;
+  
+}
+
+@media (max-width: 480px) {
+  .preview-container {
+    display: none;
+  }
 }
 
 .circle-container {
