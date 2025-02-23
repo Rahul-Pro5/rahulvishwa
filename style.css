@@ -638,6 +638,7 @@ time {
   overflow: hidden;
   cursor: pointer;
   transition: color 0.3s ease; /* Smooth color transition */
+  background: #ffffff;
 }
 
 .menu-contents td::before {
@@ -1158,6 +1159,7 @@ time {
   
   .short-about {
     padding: 35px 2rem;
+    border-bottom: transparent;
   }
   
   .Footer-1 {
