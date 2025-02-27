@@ -18,7 +18,7 @@
 }
 
 .bebas-neue {
-  font-family: var(--font-fam2);
+  font-family: var(--font-fam1);
 }
 
 .image-container {
@@ -281,10 +281,12 @@ img {
     width: 100% !important;
     margin: 0;
     padding: 10px;
+
   }
 
   .contact-details {
     gap: 0;
+    letter-spacing: 1px;
   }
 
   li {
@@ -311,20 +313,6 @@ img {
   .form-control {
     width: 100%;
   }
-
-  /* Footer adjustments */
-  .addressandnavigation {
-    flex-direction: column;
-  }
-
-  .footer-others {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footerimage img {
-    max-width: 200px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -334,7 +322,7 @@ img {
 
   .contact-content-para {
     font-size: 12px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
 
   .Addressandphone li {
