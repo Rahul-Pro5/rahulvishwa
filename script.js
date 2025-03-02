@@ -192,3 +192,87 @@ document.querySelectorAll('.menu-contents tr').forEach(row => {
       active = false;
     });
   });
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Create the circle element dynamically.
+    const follower = document.createElement("div");
+    document.body.appendChild(follower);
+  
+    // Set up styles so the circle is 10px, border-only, centered at the cursor,
+    // and uses mix-blend-mode: difference.
+    Object.assign(follower.style, {
+      width: "20px",
+      height: "20px",
+      border: "1.5px solid white", // white border; difference blend will invert this.
+      backgroundColor: "transparent",
+      borderRadius: "50%",
+      position: "fixed",
+      pointerEvents: "none",
+      zIndex: "9999",
+      transform: "translate(-50%, -50%)", // centers the circle on the pointer.
+      mixBlendMode: "difference"
+    });
+  
+    let mouseX = 0, mouseY = 0;
+    let posX = 0, posY = 0;
+  
+    // Update the target mouse coordinates.
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+  
+    // Smoothly animate the follower toward the mouse.
+    function animateFollower() {
+      posX += (mouseX - posX) * 0.2; // adjust 0.2 for more/less delay.
+      posY += (mouseY - posY) * 0.2;
+      follower.style.left = `${posX}px`;
+      follower.style.top = `${posY}px`;
+      requestAnimationFrame(animateFollower);
+    }
+  
+    animateFollower();
+  });
+  
+
+
+// Portfolio hover effect - Emotes now appear in a staggered manner
+document.addEventListener("DOMContentLoaded", () => {
+  const portfolio = document.querySelector(".hungroove-portfolio");
+  const emotes = document.querySelectorAll(".hover-image .emote");
+
+  if (emotes.length === 0) {
+      console.error("No emotes found!");
+      return;
+  }
+
+  portfolio.addEventListener("mouseenter", () => {
+      setTimeout(() => {  // Delay the entire animation by 1 second
+          emotes.forEach((emote, index) => {
+              setTimeout(() => {
+                  emote.style.opacity = "1";
+                  emote.style.transform = "scale(1)";
+
+                  if (index < 4) { 
+                      // Move left emotes away from center (emote5)
+                      emote.style.transform = `translateX(${-(100 + index * 60)}px) scale(1)`;
+                  } else if (index === 4) {
+                      // Keep emote5 in center and scale it
+                      emote.style.transform = "scale(1.2)";
+                  } else {
+                      // Move right emotes away from center (emote5)
+                      emote.style.transform = `translateX(${(index - 4) * 60 + 100}px) scale(1)`;
+                  }
+              }, index * 150); // Stagger effect (150ms per emote)
+          });
+      }, 1000); // 1-second delay before the animation starts
+  });
+
+  portfolio.addEventListener("mouseleave", () => {
+      emotes.forEach((emote) => {
+          emote.style.opacity = "0";
+          emote.style.transform = "translateX(0) scale(0)";
+      });
+  });
+});

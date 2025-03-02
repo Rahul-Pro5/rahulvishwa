@@ -1,0 +1,173 @@
+.hungroove-portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 77px 580px;
+  gap: 10px;
+  isolation: isolate;
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background: #E03616;
+
+  .hungroove-logo {
+    width: 129px;
+    height: 101.32px;
+    position: absolute;
+    left: 1217.65px; // Consider using right: Xpx; for better responsiveness
+    top: 291.39px;
+    z-index: 2;
+  }
+
+  .default-image {
+    width: 270.62px;
+    height: 255.31px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    z-index: 0;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .hover-images {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+    display: inline-flex;
+    gap: 30px;
+  }
+
+  &:hover {
+    background: #F2EFC7;
+
+    .hover-images {
+      opacity: 1;
+    }
+
+    .emote {
+      opacity: 1;
+      transform: scale(0);
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
+
+    .default-image {
+      opacity: 0;
+    }
+  }
+}
+
+
+.emote5 {
+  opacity: 1;
+  z-index: 5;
+  transform: scale(1);
+}
+
+/* Left-side emotes */
+.emote1, .emote2, .emote3, .emote4 {
+  transform: translateX(0) scale(0);
+}
+
+/* Right-side emotes */
+.emote6, .emote7, .emote8, .emote9 {
+  transform: translateX(0) scale(0);
+}
+
+/* Hover effect */
+.hungroove-portfolio:hover .emote5 {
+  transform: scale(1.2);
+}
+
+.hungroove-portfolio:hover .emote1 {
+  transform: translateX(-160px) scale(1);
+  opacity: 1;
+}
+.hungroove-portfolio:hover .emote2 {
+  transform: translateX(-140px) scale(1);
+  opacity: 1;
+}
+.hungroove-portfolio:hover .emote3 {
+  transform: translateX(-120px) scale(1);
+  opacity: 1;
+}
+.hungroove-portfolio:hover .emote4 {
+  transform: translateX(-100px) scale(1);
+  opacity: 1;
+}
+
+.hungroove-portfolio:hover .emote6 {
+  transform: translateX(100px) scale(1);
+  opacity: 1;
+}
+.hungroove-portfolio:hover .emote7 {
+  transform: translateX(120px) scale(1);
+  opacity: 1;
+}
+.hungroove-portfolio:hover .emote8 {
+  transform: translateX(140px) scale(1);
+  opacity: 1;
+}
+.hungroove-portfolio:hover .emote9 {
+  transform: translateX(160px) scale(1);
+  opacity: 1;
+}
+
+
+
+.shakesbear-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 77px 580px;
+  gap: 10px;
+  width: 100%;
+  height: 420px;
+  background: #F6F7EB;
+  transform: translate(0, 0);
+  
+  .shakesbear-logo-container {
+    display: flex;
+    gap: 90px;
+    flex-direction: row;
+    width: 100%;
+    height: 420px;
+    justify-content: center;
+    align-items: center;
+
+  .shakesbear-logo {
+    width: 280.62px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    transition: opacity 0.3s ease-out;
+  }
+  }
+
+  .sb-elements {
+    display: flex;
+    gap: 90px;
+    flex-direction: row;
+    width: 100%;
+    height: 420px;
+    justify-content: center;
+    align-items: center;
+    margin: 90px 0;
+    transition: transform 0.6s ease-out;
+  }
+
+  &:hover {
+    .sb-elements {
+      transform: translateY(-400px);
+      display: flex;
+      transition: transform 0.6s ease-out;
+    }
+
+    .shakesbear-logo {
+      opacity: 0;
+      transition: opacity 0.3s ease-out;
+    }
+  }
+}

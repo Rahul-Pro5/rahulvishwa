@@ -851,6 +851,7 @@ time {
   background-color: #101010;
   color: white;
   z-index: 2;
+  position: relative;
 }
 
 .Footer-1 {
@@ -1222,3 +1223,4 @@ time {
     font-size: 2rem;
   }
 }
+
