@@ -155,10 +155,129 @@
   transform: translateY(-400px);
   display: flex;
   transition: transform 0.6s ease-out;
+  opacity: 1;
 }
 .shakesbear-portfolio:hover .shakesbear-logo {
   opacity: 0;
   transition: opacity 0.3s ease-out;
+}
+
+.growe-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 77px 580px;
+  gap: 10px;
+  width: 100%;
+  height: 420px;
+  background: #FBFBF2;
+  transform: translate(0, 0);
+}
+.growe-portfolio .growe-logo-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.growe-portfolio .growe-logo-container .growe-logo {
+  display: block;
+  transition: transform 0.3s ease;
+  transform: scale(1);
+}
+.growe-portfolio .growe-logo-container:hover .growe-logo {
+  transform: scale(1);
+}
+.growe-portfolio .growe-logo-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 2;
+}
+.growe-portfolio .growe-logo-container:hover::after {
+  animation: shimmer 1s ease-in forwards;
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150%;
+  }
+  50% {
+    left: 50%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+.currytimes-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 77px 580px;
+  gap: 10px;
+  width: 100%;
+  height: 420px;
+  background: #FAF0CA;
+  transform: translate(0, 0);
+}
+
+.cosmobrands-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 77px 580px;
+  gap: 10px;
+  width: 100%;
+  height: 420px;
+  background: #E41571;
+  transform: translate(0, 0);
+}
+
+.downtown-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 77px 580px;
+  gap: 10px;
+  width: 100%;
+  height: 420px;
+  background: #FFFFFF;
+  transform: translate(0, 0);
+}
+
+.marketingfreaks-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 77px 580px;
+  gap: 10px;
+  width: 100%;
+  height: 420px;
+  background: #222222;
+  transform: translate(0, 0);
+}
+
+.clavio-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 77px 580px;
+  gap: 10px;
+  width: 100%;
+  height: 420px;
+  background: #6320EE;
+  transform: translate(0, 0);
 }
 
 /*# sourceMappingURL=portfolio.css.map */
