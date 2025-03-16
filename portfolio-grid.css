@@ -1,0 +1,15 @@
+.Portfolio-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background: #FAF0CA;
+}
+
+.Portfolio-grid img {
+  width: 100%;
+  display: block; /* Ensures images don't behave unexpectedly */
+  max-width: 100%;
+  height: auto;
+}
+
+/*# sourceMappingURL=portfolio-grid.css.map */
