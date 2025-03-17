@@ -1,12 +1,17 @@
+console.log("JavaScript Loaded!");
+
+
 // Menu toggle for mobile version
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 
-hamburger.addEventListener("click", mobileMenu);
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", mobileMenu);
+}
 
 function mobileMenu() {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
+  hamburger.classList.toggle("active");
+  navMenu.classList.toggle("active");
 }
 
 // copy to clipboard
@@ -83,7 +88,6 @@ movers.forEach(mover => {
 // IMAGE PREVIEW & Circle Toggle
 const cells = document.querySelectorAll('.menu-contents td');
 const imagePreview = document.querySelector('.image-preview');
-// Declare circleContainer only once here
 const circleContainer = document.querySelector('.circle-container');
 
 const images = [
@@ -97,63 +101,78 @@ const images = [
   'Assets/CLAVIO.png'
 ];
 
-cells.forEach((cell, index) => {
-  cell.addEventListener('mouseover', () => {
-    imagePreview.style.backgroundImage = `url(${images[index]})`;
-    imagePreview.style.display = 'block';
-    circleContainer.style.display = 'none';
+// Only run this code if the required elements exist
+if (cells.length > 0 && imagePreview && circleContainer) {
+  cells.forEach((cell, index) => {
+    cell.addEventListener('mouseover', () => {
+      imagePreview.style.backgroundImage = `url(${images[index]})`;
+      imagePreview.style.display = 'block';
+      circleContainer.style.display = 'none';
+    });
   });
-});
 
-// When the mouse leaves the names table, show the circle again.
-document.querySelector('.menu-contents').addEventListener('mouseleave', () => {
-    imagePreview.style.display = 'none';
-    circleContainer.style.display = 'block';
-  });
+  const menuContents = document.querySelector('.menu-contents');
+  if (menuContents) {
+    menuContents.addEventListener('mouseleave', () => {
+      imagePreview.style.display = 'none';
+      circleContainer.style.display = 'block';
+    });
+  }
+} else {
+  console.warn("One or more required elements for IMAGE PREVIEW & Circle Toggle are missing.");
+}
+
+
 
 // DOT ANIMATION CODE
 const dot = document.querySelector('.dot');
+if (!dot) {
+  console.warn('Dot element not found. Skipping dot animation.');
+} else if (!circleContainer) {
+  console.warn('Circle container not found. Skipping dot animation.');
+} else {
+  // Calculate center and define radius based on the 300×300 circle-container
+  const centerX = circleContainer.offsetWidth / 2;  // should be 150
+  const centerY = circleContainer.offsetHeight / 2; // should be 150
+  const radius = 120; // Adjust this value to match your circle image
 
-// Calculate center and define radius based on the 300×300 circle-container
-const centerX = circleContainer.offsetWidth / 2;  // should be 150
-const centerY = circleContainer.offsetHeight / 2; // should be 150
-const radius = 120; // Adjust this value to match your circle image
+  let target = { x: centerX, y: centerY };
+  let current = { x: centerX, y: centerY };
 
-let target = { x: centerX, y: centerY };
-let current = { x: centerX, y: centerY };
+  document.addEventListener('mousemove', (e) => {
+    // Only update if circleContainer is visible
+    if (getComputedStyle(circleContainer).display === 'none') return;
 
-document.addEventListener('mousemove', (e) => {
-  // Only update if circleContainer is visible
-  if (getComputedStyle(circleContainer).display === 'none') return;
+    const rect = circleContainer.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
 
-  const rect = circleContainer.getBoundingClientRect();
-  const mouseX = e.clientX - rect.left;
-  const mouseY = e.clientY - rect.top;
+    const dx = mouseX - centerX;
+    const dy = mouseY - centerY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
 
-  const dx = mouseX - centerX;
-  const dy = mouseY - centerY;
-  const distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance <= radius) {
+      target.x = mouseX;
+      target.y = mouseY;
+    } else {
+      target.x = centerX;
+      target.y = centerY;
+    }
+  });
 
-  if (distance <= radius) {
-    target.x = mouseX;
-    target.y = mouseY;
-  } else {
-    target.x = centerX;
-    target.y = centerY;
+  function animateDot() {
+    const smoothing = 0.1; // Adjust for smoother or faster movement
+    current.x += (target.x - current.x) * smoothing;
+    current.y += (target.y - current.y) * smoothing;
+    
+    dot.style.left = `${current.x}px`;
+    dot.style.top = `${current.y}px`;
+    
+    requestAnimationFrame(animateDot);
   }
-});
-
-function animateDot() {
-  const smoothing = 0.1; // Adjust for smoother or faster movement
-  current.x += (target.x - current.x) * smoothing;
-  current.y += (target.y - current.y) * smoothing;
-  
-  dot.style.left = `${current.x}px`;
-  dot.style.top = `${current.y}px`;
-  
-  requestAnimationFrame(animateDot);
+  animateDot();
 }
-animateDot();
+
 
 // Update the JavaScript in script.js
 document.querySelectorAll('.menu-contents tr').forEach(row => {
@@ -209,7 +228,7 @@ document.querySelectorAll('.menu-contents tr').forEach(row => {
       borderRadius: "50%",
       position: "fixed",
       pointerEvents: "none",
-      zIndex: "9999",
+      zIndex: "999",
       transform: "translate(-50%, -50%)", // centers the circle on the pointer.
       mixBlendMode: "difference"
     });
@@ -276,3 +295,76 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 });
+
+
+// Portfolio Forward button effect
+document.addEventListener('DOMContentLoaded', () => {
+  const tooltip = document.querySelector('.branding-tooltip');
+  const labelEl = tooltip.querySelector('.branding-label');
+
+  // Variables to hold the target and current positions.
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let animationFrame;
+
+  // Animate the tooltip's position smoothly toward the target position.
+  function animateTooltip() {
+    const smoothing = 0.1; // Adjust this value for more/less delay.
+    currentX += (targetX - currentX) * smoothing;
+    currentY += (targetY - currentY) * smoothing;
+
+    tooltip.style.left = `${currentX}px`;
+    tooltip.style.top = `${currentY}px`;
+
+    animationFrame = requestAnimationFrame(animateTooltip);
+  }
+
+  document.querySelectorAll('.branding-project').forEach(project => {
+    project.addEventListener('mouseenter', () => {
+      const projectName = project.getAttribute('data-name') || "Project";
+      labelEl.textContent = projectName;
+      tooltip.style.display = 'flex';
+
+      // Optionally initialize the current position immediately.
+      // This helps avoid a jump when the tooltip first appears.
+      // currentX = targetX; currentY = targetY;
+
+      // Start the smooth animation.
+      animationFrame = requestAnimationFrame(animateTooltip);
+    });
+
+    // On mousemove, update the target position.
+    project.addEventListener('mousemove', (event) => {
+      // Using clientX/clientY so it remains consistent with fixed positioning.
+      targetX = event.clientX;
+      targetY = event.clientY;
+    });
+
+    project.addEventListener('mouseleave', () => {
+      tooltip.style.display = 'none';
+      cancelAnimationFrame(animationFrame);
+    });
+
+    // Navigate on click.
+    project.addEventListener('click', () => {
+      const url = project.getAttribute('data-url');
+      if (url) window.location.href = url;
+    });
+  });
+});
+
+// Attach listener to all <td> elements that have a data-url attribute
+document.addEventListener('DOMContentLoaded', () => {
+  // Attach listener to all <td> elements that have a data-url attribute
+  document.querySelectorAll('td[data-url]').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const url = cell.getAttribute('data-url');
+      if (url) window.location.href = url;
+    });
+  });
+});
+
+
+

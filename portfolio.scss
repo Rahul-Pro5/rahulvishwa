@@ -1,3 +1,11 @@
+:root {
+  --bg-color: #ffffff;
+  --letter-spacing: 0.1875rem;
+  --font-fam1: 'Satoshi', sans-serif;
+  --font-fam2: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+}
+
 .hungroove-portfolio {
   display: flex;
   flex-direction: column;
@@ -254,6 +262,7 @@
   height: 420px;
   background: #FAF0CA;
   transform: translate(0, 0);
+
 }
 
 .cosmobrands-portfolio {
@@ -306,4 +315,30 @@
   height: 420px;
   background: #6320EE;
   transform: translate(0, 0);
+}
+
+/* Hide default cursor when hovering branding projects */
+.branding-tooltip {
+  position: fixed;
+  display: none;           /* Hidden until hover */
+  pointer-events: none;    /* So it never blocks clicks */
+  z-index: 9999;
+  background: rgba(0, 0, 0);
+  color: #fff;
+  padding: 15px 15px;
+  border-radius: 30px;     /* Rounded bubble */
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;     /* Keep text in one line */
+  align-items: center;
+  gap: 8px;                /* Space between text and arrow */
+  font-family: var(--font-fam2);
+  letter-spacing: var(--letter-spacing);
+  transform: translate(-50%, -50%);
+} 
+
+/* Style the arrow */
+.branding-tooltip .forward-button {
+  width: 30px;
+  height: 30px;
 }
