@@ -214,45 +214,53 @@ document.querySelectorAll('.menu-contents tr').forEach(row => {
 
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Check screen width and disable on mobile/tablet
+    function isMobile() {
+        return window.innerWidth <= 768; // Adjust breakpoint as needed
+    }
+
+    if (isMobile()) return; // Stop execution on mobile/tablet
+
     // Create the circle element dynamically.
     const follower = document.createElement("div");
     document.body.appendChild(follower);
-  
-    // Set up styles so the circle is 10px, border-only, centered at the cursor,
+
+    // Set up styles so the circle is 20px, border-only, centered at the cursor,
     // and uses mix-blend-mode: difference.
     Object.assign(follower.style, {
       width: "20px",
       height: "20px",
-      border: "1.5px solid white", // white border; difference blend will invert this.
+      border: "1.5px solid white",
       backgroundColor: "transparent",
       borderRadius: "50%",
       position: "fixed",
       pointerEvents: "none",
       zIndex: "999",
-      transform: "translate(-50%, -50%)", // centers the circle on the pointer.
+      transform: "translate(-50%, -50%)",
       mixBlendMode: "difference"
     });
-  
+
     let mouseX = 0, mouseY = 0;
     let posX = 0, posY = 0;
-  
+
     // Update the target mouse coordinates.
     document.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     });
-  
+
     // Smoothly animate the follower toward the mouse.
     function animateFollower() {
-      posX += (mouseX - posX) * 0.2; // adjust 0.2 for more/less delay.
+      posX += (mouseX - posX) * 0.2;
       posY += (mouseY - posY) * 0.2;
       follower.style.left = `${posX}px`;
       follower.style.top = `${posY}px`;
       requestAnimationFrame(animateFollower);
     }
-  
+
     animateFollower();
-  });
+});
+
   
 
 
