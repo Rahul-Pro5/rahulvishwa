@@ -258,8 +258,11 @@
   gap: 10px;
   width: 100%;
   height: 420px;
-  background: #FFFFFF;
+  background: #F6F7EB;
   transform: translate(0, 0);
+}
+.downtown-portfolio .downtown-logo-container {
+  width: 225px;
 }
 
 .marketingfreaks-portfolio {

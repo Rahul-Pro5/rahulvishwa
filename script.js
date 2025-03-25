@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Animate the tooltip's position smoothly toward the target position.
   function animateTooltip() {
-    const smoothing = 0.1; // Adjust this value for more/less delay.
+    const smoothing = 0.2; // Adjust this value for more/less delay.
     currentX += (targetX - currentX) * smoothing;
     currentY += (targetY - currentY) * smoothing;
 
@@ -354,6 +354,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+
+
 
 // Attach listener to all <td> elements that have a data-url attribute
 document.addEventListener('DOMContentLoaded', () => {
